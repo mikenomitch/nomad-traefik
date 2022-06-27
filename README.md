@@ -6,3 +6,5 @@ These are the jobs deployed to Nomad in the [Nomad & Traefik webinar](https://in
 * [Inner](./inner.nomad) - A service that reads environment variables and prints them.
 
 These can be easily deployed onto a [Quick Nomad Stack on AWS](https://github.com/mikenomitch/quick-nomad-stack).
+
+Note: Replace "providers.nomad.endpoint.address" value in the Traefik jobspec CLI args with your Nomad address.

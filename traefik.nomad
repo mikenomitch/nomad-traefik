@@ -19,6 +19,7 @@ job "traefik" {
       config {
         image = "traefik:2.8"
         ports = ["admin", "http"]
+        // Replace providers.nomad.endpoint.address with your address!
         args = [
           "--api.dashboard=true",
           "--api.insecure=true",
