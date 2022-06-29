@@ -26,7 +26,7 @@ job "traefik" {
           "--entrypoints.web.address=:${NOMAD_PORT_http}",
           "--entrypoints.traefik.address=:${NOMAD_PORT_admin}",
           "--providers.nomad=true",
-          "--providers.nomad.endpoint.address=http://3.95.169.195:4646"
+          "--providers.nomad.endpoint.address=http://nomad-stack-nomad-servers-780485217.us-east-1.elb.amazonaws.com"
         ]
       }
     }

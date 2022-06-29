@@ -9,9 +9,10 @@ job "inner_service" {
     }
 
     service {
-      name     = "inner-service"
+      name     = "inner"
       provider = "nomad"
       port     = "http"
+      address  = "${attr.unique.platform.aws.public-ipv4}"
     }
 
     task "env-reader" {

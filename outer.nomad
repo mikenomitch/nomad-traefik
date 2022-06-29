@@ -11,10 +11,11 @@ job "outer_service" {
     }
 
     service {
-      name = "outer"
+      name     = "outer"
       provider = "nomad"
-      port = "http"
-      tags = [
+      port     = "http"
+      address  = "${attr.unique.platform.aws.public-ipv4}"
+      tags     = [
         "traefik.enable=true",
         "traefik.http.routers.http.rule=Path(`/outer`)"
       ]
@@ -28,7 +29,6 @@ job "outer_service" {
         ports = ["http"]
       }
 
-
       env {
         PORT = 4001
       }
@@ -36,7 +36,7 @@ job "outer_service" {
       # This gets a list of the addresses for inner-service and selects the first to query
       template {
         data = <<EOH
-{{- range $index, $service := nomadService "inner-service" }}
+{{- range $index, $service := nomadService "inner" }}
 {{- if eq $index 0}}
 CURL_ADDR="http://{{.Address}}:{{.Port}}"
 {{- end }}
