@@ -4,6 +4,10 @@ job "outer_service" {
   group "service" {
     count = 2
 
+    spread {
+      attribute = "${node.unique.id}"
+    }
+
     network {
       port "http" {
         to = 4001
